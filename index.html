@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,img{padding:0;margin:0;}
+        #box{position:absolute;bottom:0;width:100%;text-align:center;}
+    </style>
+    <script>
+        window.onload=function(){
+            document.onmousemove=function (ev)
+            {
+                var oEvent=ev||event;
+                var oDiv=document.getElementById('box');
+                var aImg=oDiv.getElementsByTagName('img');
+                var d=0;
+                var iMax=200;
+                var i=0;
+
+                function getDistance(obj)
+                {
+                    return Math.sqrt
+                    (
+                            Math.pow(obj.offsetLeft+oDiv.offsetLeft-oEvent.clientX+obj.offsetWidth/2, 2)+ Math.pow(obj.offsetTop+oDiv.offsetTop-oEvent.clientY+obj.offsetHeight/2, 2)
+                    );
+                }
+
+                for(i=0;i<aImg.length;i++) {
+                    d = getDistance(aImg[i]);
+                    d = Math.min(d, iMax);
+
+                    aImg[i].width = ((iMax - d) / iMax) * 64 + 64;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <img src="images/1.png" alt=""/>
+    <img src="images/2.png" alt=""/>
+    <img src="images/3.png" alt=""/>
+    <img src="images/4.png" alt=""/>
+    <img src="images/5.png" alt=""/>
+    <!--<img src="images/1.png" alt=""/>
+    <img src="images/2.png" alt=""/>
+    <img src="images/3.png" alt=""/>
+    <img src="images/4.png" alt=""/>
+    <img src="images/5.png" alt=""/>
+    <img src="images/1.png" alt=""/>
+    <img src="images/2.png" alt=""/>
+    <img src="images/3.png" alt=""/>
+    <img src="images/4.png" alt=""/>
+    <img src="images/5.png" alt=""/>
+    <img src="images/1.png" alt=""/>
+    <img src="images/2.png" alt=""/>
+    <img src="images/3.png" alt=""/>
+    <img src="images/4.png" alt=""/>-->
+</div>
+</body>
+</html>
